@@ -1,6 +1,7 @@
 #!/usr/bin/env rake
 require "bundler/gem_tasks"
 
+desc "Run RSpec against all database types."
 task :rspec_all_databases do
   require 'posix-spawn'
   %w{ postgresql mysql2 sqlite3 }.each do |adapter|
