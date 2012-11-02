@@ -88,10 +88,11 @@ class Upsert
   ISO8601_DATE = '%F'
   NULL_WORD = 'NULL'
   HANDLER = {
-    'SQLite3::Database' => 'SQLite3_Database',
-    'PGConn'            => 'PG_Connection',
-    'PG::Connection'    => 'PG_Connection',
-    'Mysql2::Client'    => 'Mysql2_Client',
+    'SQLite3::Database'                                         => 'SQLite3_Database',
+    'PGConn'                                                    => 'PG_Connection',
+    'PG::Connection'                                            => 'PG_Connection',
+    'Mysql2::Client'                                            => 'Mysql2_Client',
+    'ActiveRecord::ConnectionAdapters::MySQLJdbcConnection'     => 'Mysql2_Client',
   }
 
   # @return [Upsert::Connection]
