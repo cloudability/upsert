@@ -92,8 +92,8 @@ class Upsert
     'PGConn'                                                    => 'PG_Connection',
     'PG::Connection'                                            => 'PG_Connection',
     'Mysql2::Client'                                            => 'Mysql2_Client',
-    'ActiveRecord::ConnectionAdapters::MySQLJdbcConnection'     => 'Mysql2_Client',
-  }
+    'ActiveRecord::ConnectionAdapters::MySQLJdbcConnection'     => 'MySQLJdbc_Client',
+  }.freeze
 
   # @return [Upsert::Connection]
   attr_reader :connection

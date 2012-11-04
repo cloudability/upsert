@@ -1,4 +1,5 @@
 require 'upsert/connection/mysql2_client'
+require 'upsert/connection/mysqljdbc_client'
 require 'upsert/connection/pg_connection'
 require 'upsert/connection/sqlite3_database'
 
