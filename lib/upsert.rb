@@ -23,14 +23,24 @@ class Upsert
           rails_logger
         elsif defined?(::ActiveRecord) and ::ActiveRecord.const_defined?(:Base) and (ar_logger = ::ActiveRecord::Base.logger)
           ar_logger
+        elsif RUBY_PLATFORM == 'java'
+          my_logger = Logger.getLogger('Upsert')
+          my_logger.set_level(org.apache.log4j.Level::INFO)
+          my_logger
         else
-          my_logger = Logger.new $stderr
+          my_logger = Logger.new($stderr)
           my_logger.level = Logger::INFO
           my_logger
         end
+
         if ENV['UPSERT_DEBUG'] == 'true'
-          @logger.level = Logger::DEBUG
+          if RUBY_PLATFORM == 'java'
+            @logger.set_level(org.apache.log4j.Level::DEBUG)
+          else
+            @logger.level = Logger::DEBUG
+          end
         end
+
         @logger
       end
     end
