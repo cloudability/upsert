@@ -43,7 +43,9 @@ class Upsert
       def update_part
         @update_part ||= begin
           connection = parent.connection
-          updaters = setter.map do |k|
+          keys = setter
+          keys.delete('created_at')
+          updaters = keys.map do |k|
             quoted_name = connection.quote_ident(k)
             if original_setter.include?(k)
               "#{quoted_name}=VALUES(#{quoted_name})"
